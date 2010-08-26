@@ -1,0 +1,15 @@
+develop-eggs
+eggs
+fake-eggs
+bin
+parts
+downloads
+var
+build
+dist
+*.egg-info
+.*
+*.pyc
+*.wpr
+src
+!.gitignore
