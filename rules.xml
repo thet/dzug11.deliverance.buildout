@@ -9,89 +9,59 @@
     <edit-local-files>false</edit-local-files>
   </server-settings>
 
-  <proxy path="/" class="plone">
-    <dest href="http://localhost:8080/VirtualHostBase/http/localhost:5000/wpd/VirtualHostRoot/" />
+  <proxy path="/" class="main">
+    <dest href="http://zope.org" />
   </proxy>
 
-  <!-- make popups and tinymce work with deliverance -->
-  <match path="regex:.*contenthistorypopup.*" abort="1" />  <!-- popupforms.js corrections -->
-  <match path="regex:^/portal_javascripts/.*" abort="1" />  <!-- TinyMCE -->
-  <match path="regex:.*/themes/advanced/.*" abort="1" />  <!-- TinyMCE -->
-  <match path="regex:.*/plugins/.*" abort="1" />  <!-- TinyMCE -->
 
   <!-- ====================================================== -->
   <!-- Rules                                                  -->
   <!-- ====================================================== -->
 
-  <rule class="plone" suppress-standard="1">
-    <theme href="http://de.wikipedia.org/wiki/Wikipedia:Hauptseite" />
+  <rule class="main" suppress-standard="1">
+    <theme href="http://www.google.at/" />
 
-    <drop theme="/html/head/meta" />
+    <drop content=".columns .left .box .body ul ul" />
+    <replace content="children:.columns .left .box .body ul li" theme="children:#gbar" />
+
+    <replace content=".top a[href='http://www.zope.org']" theme="children:#lga>div" />
+
+    <!-- all attributes are copied, not only action and name -->
+    <replace content="attributes(action,name):.searchBox form" theme="attributes(action,name):form" />
+
+    <!-- #searchform does not work since rule is not applied to modified theme -->
+    <drop theme="form input[type='hidden']" />
+
+    <drop theme="input[name='btnI']" />
+    <replace content="attributes(value):.searchButton" theme="attributes(value):input[name='btnG']" />
+
+
+
+    <!-- drop theme="/html/head/meta" />
 
     <replace content="/html/head/title" theme="/html/head/title" />
     <append content="/html/head/meta" theme="children:/html/head" />
-	<append content="/html/head/base" theme="children:/html/head" />
-	<!-- append content="link[rel *= 'kss-base-url']" theme="children:/html/head" /-->
-
-    <!-- Add in the Plone-created CSS, KSS and JS in addition to the static ones -->
-    <!-- append content="link[href *= 'member']" theme="/html/head/link" />
-    <append content="link[href *= 'public']" theme="/html/head/link" />
-    <append content="link[href *= 'ploneKss']" theme="/html/head/link" />
-    <append content="/html/head/style" theme="/html/head/link" />
-	<append content="link[rel *= 'kinetic-stylesheet']" theme="/html/head/link" />
-	<append content="/html/head/script" theme="/html/head/link" /-->
+	<append content="/html/head/base" theme="children:/html/head" /-->
 
     <!-- ====================================================== -->
     <!-- BODY                                                 -->
     <!-- ====================================================== -->
 
     <!-- Set correct Link for the logo -->
-    <replace content='attributes(href,accesskey,title):#portal-logo' theme='attributes:#p-logo a' />
+    <!-- replace content='attributes(href,accesskey,title):#portal-logo' theme='attributes:#p-logo a' /-->
 
     <!-- Search box -->
-    <replace content="children:#portal-searchbox" theme="children:#searchBody" />
+    <!-- replace content="children:#portal-searchbox" theme="children:#searchBody" /-->
 
-    <replace content="#portal-globalnav" theme="#p-cactions .pBody ul " />
+    <!-- replace content="#portal-globalnav" theme="#p-cactions .pBody ul " /-->
 
-    <replace href="http://oe1.orf.at/" content=".programm" theme="#p-navigation" />
-
-
-    <!-- ====================================================== -->
-    <!-- Portlets and Viewlets                                  -->
-    <!-- ====================================================== -->
-
-	<!-- Portlets Prepare -->
-	<!-- drop content="tag:div[id *= 'portletwrapper']" />
-	<drop content="span.portletTopLeft" />
-	<drop content="span.portletTopRight" /-->
-
-	<!-- Horizontal Navigation -->
-	<!-- drop content=".portletNavigationTree .portletItem li img" />
-    <replace content="children:.portletNavigationTree .portletItem" theme="children:#sfd-menu" />
-	<drop content="dl.portletNavigationTree" /-->
-
-	<!-- Portlets Prepare -->
-	<!-- append content="children:#portal-column-one" theme="children:#sfd-menu" /-->
-
-
+    <!-- replace href="http://oe1.orf.at/" content=".programm" theme="#p-navigation" /-->
 
     <!-- ====================================================== -->
     <!-- Main Content                                           -->
     <!-- ====================================================== -->
 
-    <replace content="#portal-column-content" theme="#hauptseite" />
-
-    <!-- replace content="#grak-navigator" theme="#grak-navigator" / -->
-	<!-- drop theme="children:#sfd-content" />
-	<append content="attributes(class):div.documentEditable" theme="attributes(class):#sfd-content" />
-    <append content="#content h1" theme="children:#sfd-content" />
-    <append content="#plone-document-byline" theme="children:#sfd-content" />
-    <append content="#edit-bar" theme="children:#sfd-content" />
-    <append content="#kssPortalMessage" theme="children:#sfd-content" />
-    <append content="#content" theme="children:#sfd-content" />
-
-    <append content="#pb_1" theme="#grak-footer" />
-    <append content="#pb_2" theme="#grak-footer" /-->
+    <!-- replace content="#portal-column-content" theme="#hauptseite" /-->
 
   </rule>
 </ruleset>
