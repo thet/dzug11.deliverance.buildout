@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset>
+  <server-settings>
+    <server>localhost:5000</server>
+    <execute-pyref>false</execute-pyref>
+    <dev-allow>localhost</dev-allow>
+    <dev-user username="admin" password="admin" />
+    <display-local-files>false</display-local-files>
+    <edit-local-files>false</edit-local-files>
+  </server-settings>
+
+  <proxy keep-host="1" path="/themes/nonzero">
+    <dest href="{here}/themes/nonzero/" />
+  </proxy>
+
+  <proxy path="/" class="main">
+    <response rewrite-links="1" />
+    <dest href="http://www.heise.de/tp" />
+  </proxy>
+
+
+  <!-- RULES -->
+  <rule class="main" suppress-standard="1">
+    <theme href="/themes/nonzero/index_fluid.html" />
+
+    <drop theme="#menu" />
+
+    <drop content=".logo table" />
+    <replace content=".logo a" theme="children:#logo" />
+
+    <drop content=".content .bottom-ad" />
+    <drop content=".ISI_IGNORE" />
+
+    <drop theme="children:#columnB_3columns" />
+    <append if-content=".forum" content=".forum" theme="children:#columnB_3columns" />
+
+    <drop content=".blogbottom" />
+    <replace content="children:.content" theme="children:#columnA_3columns" />
+
+    <replace content="children:.leftcontent" theme="children:#columnC_3columns" />
+  </rule>
+</ruleset>

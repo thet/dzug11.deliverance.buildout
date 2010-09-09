@@ -1,0 +1,1 @@
+/* CSS an dieser Stelle wirkt sich auf Handheld-Geräte, basierend auf den in $wgHandheldStyle konfigurierten Skin, aus */

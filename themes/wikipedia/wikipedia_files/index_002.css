@@ -1,0 +1,41 @@
+/* CSS placed here will affect the print output */
+
+/* Navigationsleisten nicht mit ausdrucken */
+div.NavFrame,
+div.BoxenVerschmelzen {
+	display: none;
+}
+
+/* ↑ a b c usw. in der Einzelnachweiseliste nicht mit ausdrucken,
+    sinnlos, da man auf dem Papier nicht klicken kann und die Buchstaben
+    im Text auch nicht vorkommen
+ */
+ol.references li a[href|="#cite_ref"] {
+	display: none;
+}
+
+/* [[Wikipedia:Verbesserungsvorschläge/Feature-Requests/Archiv/2007#a:after in der commonPrint.css (erledigt)]] */
+#content .plainlinks-print a.external.text:after,
+#content .plainlinks-print a.external.autonumber:after {
+	content: "";
+}
+
+/* Vorwegnahme von [[rev:66535]] und [[rev:66547]] (entfernen, wenn live) */
+.wikitable {
+	margin: 1em 1em 1em 0;
+	border: 1px #aaa solid;
+	background: white;
+	border-collapse: collapse;
+}
+.wikitable th, .wikitable td {
+	border: 1px #aaa solid;
+	padding: 0.2em;
+}
+.wikitable th {
+	text-align: center;
+	background: white;
+	font-weight: bold;
+}
+.wikitable caption {
+	font-weight: bold;
+}

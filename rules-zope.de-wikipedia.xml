@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset>
+  <server-settings>
+    <server>localhost:5000</server>
+    <execute-pyref>false</execute-pyref>
+    <dev-allow>localhost</dev-allow>
+    <dev-user username="admin" password="admin" />
+    <display-local-files>false</display-local-files>
+    <edit-local-files>false</edit-local-files>
+  </server-settings>
+
+  <proxy path="/" class="main">
+    <response rewrite-links="1" />
+    <dest href="http://www.zope.de/" />
+  </proxy>
+
+
+  <!-- RULES -->
+  <rule class="main" suppress-standard="1">
+    <theme href="http://de.wikipedia.org/wiki/Wikipedia:Hauptseite" />
+
+    <replace content="/html/head/title" theme="/html/head/title" />
+    <drop theme="/html/head/meta" />
+    <append content="/html/head/meta" theme="/html/head" />
+    <replace content="link[rel='shortcut icon']" theme="link[rel='shortcut icon']" />
+
+    <drop theme="#p-views" />
+    <replace content="#portal-globalnav" theme="children:#p-namespaces" />
+
+    <drop content="#siteaction-login" /> <!-- button set per css which is not loaded yet-->
+    <replace content="#portal-siteactions" theme="children:#p-personal" />
+
+    <drop theme="#p-Mitmachen" />
+    <drop theme="#p-coll-print_export" />
+    <drop theme="#p-tb" />
+    <drop theme="#p-lang" />
+    <drop theme="children:#p-navigation div.body" />
+    <drop content="tag:ul.navTree div" /> <!-- applied to all divs in ul.navtree -->
+    <drop content="tag:ul.navTree span" /> <!-- applied to all spans in ul.navtree -->
+    <append if-content="ul.navTree"
+            content="ul.navTree"
+            theme="children:#p-navigation div.body" />
+    
+    <replace content="#portal-logo" theme="children:#p-logo" />
+
+    <drop content="#portal-searchbox .hiddenStructure" />
+    <drop content="tag:#LSBox" />
+    <drop content="#LSResult" />
+    <drop content="#portal-advanced-search" />
+
+    <replace content="attributes(action):#portal-searchbox form"
+             theme="attributes(action):#searchform" />
+    <replace content="#searchGadget" theme="#searchInput" /> 
+
+    <drop theme="children:#hauptseite" />
+    <append content="#slider p" theme="children:#hauptseite" />
+    <append content="children:#portal-column-content" theme="children:#hauptseite" />
+
+    <drop theme="#footer-info-lastmod" />
+    <replace content="children:#feeter_left" theme="children:#footer-info-copyright" />    
+    <drop theme="#footer-places" />
+    <replace content="children:#feeter_right" theme="children:#footer-icons" />
+  
+  </rule>
+</ruleset>
