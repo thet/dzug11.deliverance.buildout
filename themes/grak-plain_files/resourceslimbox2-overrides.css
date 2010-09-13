@@ -1,0 +1,12 @@
+.lbLoading {
+	background-image:url(++resource++slimbox2/css/loading.gif);
+}
+#lbCloseLink {
+	background-image:url(++resource++slimbox2/css/closelabel.gif);
+}
+#lbNextLink:hover {
+	background-image:url(++resource++slimbox2/css/nextlabel.gif);
+}
+#lbPrevLink:hover {
+	background-image:url(++resource++slimbox2/css/prevlabel.gif);
+}

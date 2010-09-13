@@ -1,0 +1,123 @@
+#portal-breadcrumbs > span,
+#portal-breadcrumbs > span > span {
+	display:inline !important;
+}
+#portal-breadcrumbs {
+	margin-bottom:0;
+}
+
+
+#grak-navigation {
+	height:90px;
+}
+
+/*=========== div grak-navigation ===========*/
+
+#grak-wrapperNav {
+    width:100%;
+    min-width:1430px;
+    }
+
+#grak-navigation h1 {
+    text-indent: -1000px;
+    height:0px;
+    }
+    
+/* COMMON */
+#grak-navigation ul {
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    padding-left:124px;
+    font-size: 0.75em;
+}
+#grak-navigation ul li {
+    display: inline;
+    margin-right:-2px;
+}
+#grak-navigation ul li a{
+    font-style:normal;
+}
+
+/* grak-nav1 */
+ul#grak-nav1 {
+    background: #66a502 url(../images/nav1_bg2.png) repeat-x;
+    z-index:50;
+    height:30px;  
+}
+ul#grak-nav1 li {
+    color: #F6F6F6;
+    border-left: 2px solid #F6F6F6;
+    padding: 9px 12px;
+    line-height: 30px;
+}
+ul#grak-nav1 li a { 
+    color: #F6F6F6;
+}
+ul#grak-nav1 li a:link, ul#grak-nav1 li a:visited {
+    color: #fff;
+}
+ul#grak-nav1 li a:hover, ul#grak-nav1 li a:active, ul#grak-nav1 li.selected a {
+    color:#212300;
+}
+ul#grak-nav1 li a:focus {
+    color: #2a4f11;
+}
+
+/* grak-nav1-sub */
+#grak-navigation div.grak-nav1-sub {
+    display:none;
+    width:100%;
+    background-color: #f6f6f6;
+}
+#grak-navigation div.selected { display:block; }
+ul.grak-nav1-sub {
+    width:1000px;
+    z-index: 40;
+    margin-top:1px;
+    font-size: 90%;
+}
+ul.grak-nav1-sub li {
+    line-height: 25px;
+    height:25px;
+    padding:0px;
+    border-left: 0px;
+}
+ul.grak-nav1-sub li a {
+    color:#212300;
+    line-height:25px;
+    background-color: #f6f6f6;
+    display:inline-block;
+    padding: 0 12px;
+    border-left: 2px solid #F6F6F6;
+}
+ul.grak-nav1-sub li a:hover, ul.grak-nav1-sub li.selected a {
+    background: #d3d3d3 url(../images/bg_nav1sub.png) repeat-x;
+}
+
+
+.bdright {
+    border-right: 2px solid #F6F6F6;
+    }
+.navpoint, ul#grak-nav1 > li.selected {
+    background: url(../images/navpoint.png) center 24px no-repeat;
+    }
+.navpoint {
+    z-index: 90;
+    }
+.li.selected {
+    z-index: 80;
+    }
+
+div#grak-sub-publikationen ul {
+    margin-left:245px;	
+    }
+div#grak-sub-kontakt ul {
+    margin-left:600px;	
+    }
+div#grak-sub-uber-uns ul {
+    margin-left: 520px;
+    }
+ul#grak-nav1 li#grak-navitem-index_html { display:none; }
+
