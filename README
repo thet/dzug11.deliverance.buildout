@@ -48,3 +48,11 @@ zc.buildout on pypi:
     - http://pypi.python.org/pypi/zc.buildout
 
 #
+
+more info
+=========
+
+To run the rules for Gruene Akademie example Plone site do:
+$./bin/deliverance-proxy rules-grak.xml
+and open a browser like:
+$ firefox http://localhost:5000/grak-plain.html
