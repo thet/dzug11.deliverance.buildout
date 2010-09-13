@@ -1,0 +1,57 @@
+/* newsletter css styles */
+
+body div#content {
+	position: relative;
+	max-width:650px;
+	
+	}
+body.newsletter {
+	background-color: #f6f6f6;
+	}
+body.newsletter div.grak-listing {
+	font-size:60.01% !important;
+	}
+
+body.newsletter div.grak-listing div.wrapper h2 {
+	line-height: 1.3em;
+	
+	}
+
+body.newsletter div.grak-listing div.wrapper h4 {
+	line-height: 1.3em;
+	}
+
+body.newsletter div.grak-listing div.wrapper h2 a {
+	text-decoration: none;
+	border-bottom:none;
+	font-style: normal;
+	}
+
+div.va_bild a {
+	border-bottom: none;
+	}
+
+
+div.grak-listing div.wrapper p {
+	font-size: 120%;
+	}
+
+div.grak-listing {
+	border-bottom: 1px solid #e3e3e3;
+	padding-bottom: 5px;
+	}
+	
+.plain {
+	margin-top: 10px;
+}
+
+h1.documentFirstHeading {
+	margin-top: 30px;
+	margin-left: 50px;
+	color:#7CC21E;
+	}
+
+.text-document p {
+	margin-left: 50px;
+	margin-bottom: 25px;
+	}

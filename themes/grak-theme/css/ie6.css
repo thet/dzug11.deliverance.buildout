@@ -1,0 +1,71 @@
+div#grak-banner {
+    /*visibility: hidden;*/
+    }
+   
+ul#grak-navigator {
+width:675px;
+    }
+
+div#grak-banner {
+left:1040px;
+top:317px;
+
+}
+
+div#grak-content {
+
+height:auto !important;
+min-height:1200px;
+}
+
+div#grak-banner {
+
+    background: url(../images/bannerimg_03-trans.png) 0 130px no-repeat;
+    }
+    
+div#grak-nav2 {
+overflow:hidden;
+}
+
+
+
+
+div#gak-nav2 {
+background:url("../images/bg_nav2.png") repeat-x scroll 0 -2px #070700;
+font-size:0.63em;
+left:0;
+min-width:1430px;
+width: auto !important;
+width:1430px;
+overflow:hidden;
+position:absolute;
+text-transform:uppercase;
+top:0;
+height:25px !important;
+}
+
+#content  {
+overflow:hidden;
+}
+
+#grak-content_main div.veranstaltungen {
+background:url("../images/bg_vaDetail-kalender.png");
+background-repeat: no-repeat;
+min-height: 150px;
+height: auto !important;
+height:150px;
+}
+
+div.wrapper {
+margin-top:5px;
+margin-left: -19px;
+}
+
+.access {
+    background-repeat: no-repeat;
+    background-image: url(../images/img_access.jpg);
+    }
+   
+#grak-wrapperNav {
+margin-top:-15px;
+}

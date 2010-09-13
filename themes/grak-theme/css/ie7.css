@@ -1,0 +1,37 @@
+#grak-content_main h1 {
+  margin-left: 25px;
+    }
+
+ul#grak-navigator {
+    margin-left:45px;
+    }
+    
+#content-core {
+    margin-left:18px;
+    margin-right:28px;
+    }
+  
+.access {
+    background-repeat: no-repeat;
+    background-image: url(../images/img_access.jpg);
+    }
+
+#vaDetail{
+margin-left:45px;
+}
+
+
+#parent-fieldname-text {
+    
+    }
+
+#content div#vaDetail span.copyright {
+    font-size: 0.01em;
+    text-indent: -3000px;
+    display: none;
+    color: #444;
+    }
+
+#content div.listingBar {
+margin-left:30px;
+}

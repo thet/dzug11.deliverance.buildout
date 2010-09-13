@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Flash Gallery</title>
+<style type="text/css">
+html {background-color:#EEEEEE;}
+body {background-color:#FFFFFF; margin:0 auto; margin-top:30px; margin-bottom:30px; padding:30px 30px 40px 30px; width:720px; color:#222222; border:1px solid #E0E0E0;}
+a {text-decoration:none; color:#2887E3;}
+a:hover {text-decoration:underline;}
+code {color: #666666;}
+table {border-collapse: collapse;}
+table td {border:1px solid #BBBBBB;}
+h1 {text-align:center; margin:0;}
+h2 {margin:25px 0 10px 0;}
+h3 {margin:10px 0 3px 0;}
+i {color:#000000;}
+ul.tabs {margin:0 10px; padding:0; text-align:right;}
+ul.tabs li {list-style:none; display:inline; margin:0; padding:0;}
+ul.tabs a {border:1px solid #E0E0E0; padding:3px 6px; background:#F0F0F0; font-size:18px; text-decoration:none;}
+ul.tabs a:hover {text-decoration:none; background-color:#F6F6F6;}
+ul.tabs a.current {background:#FFFFFF; color:#222222; border-bottom:1px solid #FFFFFF;}
+#div_1, #div_2 {border:1px solid #E0E0E0; padding:5px 15px 15px 15px; margin-top:3px;}
+</style>
+
+<script type="text/javascript">
+getElem = function(elemId) {return document.getElementById(elemId);}
+var CurrentStep = 1;
+function SetCurrent(val)
+{
+	if(CurrentStep!=val)
+	{
+	 getElem('div_'+CurrentStep).style.display = 'none';
+	 getElem('a_title_'+CurrentStep).className = '';
+	 getElem('div_'+val).style.display = 'block';
+	 getElem('a_title_'+val).className = 'current';
+	}
+	CurrentStep = val;
+}
+</script>
+
+</head>
+
+<body>
+<h1>Flash Gallery</h1>
+<h2>License</h2>
+This application is developed by <a href="http://www.realitysoftware.ca">Reality Software</a> and released by <a href="http://www.flash-gallery.org">Flash Gallery</a> under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a> license, which means you can use it in any way you want provided you keep our links intact.<br/>
+<b>Don't want our links in the script? You can support this project by <a href="http://www.flash-gallery.org/buy.html">purchasing</a> a paid version.</b>
+<h2>What's included</h2>
+<ul>
+  <li><i>flashgallery.html</i> - demo use of the gallery with comments;</li>
+  <li><i>default.xml</i> - customizable settings;</li>
+  <li><i>flashgallery.swf</i> - compiled Flash application;</li>
+  <li><i>flashgallery.php</i> - script that scans folder for JPG and PNG files and reads filenames;</li>
+  <li><i>swfobject.js</i> - script that detects Flash.</li>
+</ul>
+<h2>Installation tips</h2>
+<ul class="tabs">
+  <li><a id="a_title_1" onclick="SetCurrent(1);return false;" class="current" href="#">Local images</a></li>
+  <li><a id="a_title_2" onclick="SetCurrent(2);return false;" href="#">Flickr photostream</a></li>
+</ul>
+<div id="div_1"> 
+<h3>Step 1</h3>
+Copy all files to your webserver and try running <i>flashgallery.html</i>. You should be able to view demo images. If it works, then move to the next step.<br/>
+<strong>Note: Your server should support PHP for this script to work with local images.</strong>
+<h3>Step 2</h3>
+You need to embed gallery into your webpages. You can copy and paste code from <i>flashgallery.html</i> or from here.<br/>
+<strong>Note: You can change the location of files in the following code. The path can be relative or absolute (except for <i>img</i> folder, which should always be relative to php script).</strong>
+<br/><br/>
+Add this to the head of your webpage:
+<br/>
+<code>&lt;!-- Location of javascript. --&gt;<br/>
+&lt;script language="javascript" type="text/javascript" src="swfobject.js" &gt;&lt;/script&gt;</code>
+<br/>
+<br/>
+Add this to the body of your webpage, where you want player to appear:
+<br/>
+<code>&lt;!-- Div that contains gallery. --&gt;<br/>
+&lt;div id="gallery" align="center"&gt;<br/>
+&lt;h1&gt;No flash player!&lt;/h1&gt;<br/>
+&lt;p&gt;It looks like you don't have flash player installed. &lt;a href="http://www.macromedia.com/go/getflashplayer" &gt;Click here&lt;/a&gt; to go to Macromedia download page.&lt;/p&gt;<br/>
+&lt;/div&gt;<br/>
+<br/>
+&lt;!-- Script that embeds gallery. --&gt;<br/>
+&lt;script language="javascript" type="text/javascript"&gt;<br/>
+var so = new SWFObject("flashgallery.swf", "gallery", "640", "480", "8"); // Location of swf file. You can change gallery width and height here (using pixels or percents).<br/>
+so.addParam("quality", "high");<br/>
+so.addParam("allowFullScreen", "true");<br/>
+so.addParam("wmode", "transparent");<br/>
+so.addVariable("content_path","img"); // Location of a folder with JPG and PNG files (relative to php script).<br/>
+so.addVariable("color_path","default.xml"); // Location of xml file with settings.<br/>
+so.addVariable("script_path","flashgallery.php"); // Location of php script.<br/>
+so.write("gallery");<br/>
+&lt;/script&gt;</code>
+<br/>
+<br/>
+<strong>Note: You can change gallery width and height (using pixels or percents).</strong>
+<br/>
+<br/>
+Add this somewhere in the body of your webpage:<br/>
+<code>&lt;!-- <br/>
+Please place this link anywhere on the page that uses Flash Gallery.<br/>
+You can style it anyway you want, but do not change or delete it.<br/>
+Read the license! Thanks. :-)<br/>
+--&gt;<br/>
+Powered by &lt;a href="http://www.flash-gallery.org"&gt;Flash Gallery&lt;/a&gt;</code>
+<h3>Step 3</h3>
+Upload your JPG and PNG files to <i>img</i> folder.
+</div>
+<div id="div_2" style="display:none"> 
+<h3>Step 1</h3>
+You need to embed gallery into your webpages. You can copy and paste code from <i>flashgallery.html</i> or from here.<br/>
+<strong>Note: You can change the location of files in the following code (the path can be relative or absolute).</strong>
+<br/><br/>
+Add this to the head of your webpage:
+<br/>
+<code>&lt;!-- Location of javascript. --&gt;<br/>
+&lt;script language="javascript" type="text/javascript" src="swfobject.js" &gt;&lt;/script&gt;</code>
+<br/>
+<br/>
+Add this to the body of your webpage, where you want player to appear:
+<br/>
+<code>&lt;!-- Div that contains gallery. --&gt;<br/>
+&lt;div id="gallery" align="center"&gt;<br/>
+&lt;h1&gt;No flash player!&lt;/h1&gt;<br/>
+&lt;p&gt;It looks like you don't have flash player installed. &lt;a href="http://www.macromedia.com/go/getflashplayer" &gt;Click here&lt;/a&gt; to go to Macromedia download page.&lt;/p&gt;<br/>
+&lt;/div&gt;<br/>
+<br/>
+&lt;!-- Script that embeds gallery. --&gt;<br/>
+&lt;script language="javascript" type="text/javascript"&gt;<br/>
+var so = new SWFObject("flashgallery.swf", "gallery", "640", "480", "8"); // Location of swf file. You can change gallery width and height here (using pixels or percents).<br/>
+so.addParam("quality", "high");<br/>
+so.addParam("allowFullScreen", "true");<br/>
+so.addParam("wmode", "transparent");<br/>
+so.addVariable("content_path","http://www.flickr.com/photos/username/"); // Link to Flickr photostream (for example "http://www.flickr.com/photos/username/" or "http://www.flickr.com/photos/username/sets/setid/").<br/>
+so.addVariable("color_path","default.xml"); // Location of xml file with settings.<br/>
+so.write("gallery");<br/>
+&lt;/script&gt;</code>
+<br/>
+<br/>
+<strong>Note: You can change gallery width and height (using pixels or percents).</strong>
+<br/>
+<br/>
+Add this somewhere in the body of your webpage:<br/>
+<code>&lt;!-- <br/>
+Please place this link anywhere on the page that uses Flash Gallery.<br/>
+You can style it anyway you want, but do not change or delete it.<br/>
+Read the license! Thanks. :-)<br/>
+--&gt;<br/>
+Powered by &lt;a href="http://www.flash-gallery.org"&gt;Flash Gallery&lt;/a&gt;</code>
+<h3>Step 2</h3>
+Replace <i>"http://www.flickr.com/photos/username/"</i> with a link to your Flickr photostream or set.
+</div>
+
+<h2>Customizing gallery</h2>
+You can customize gallery looks in <i>default.xml</i> by changing the following variables:
+<br/>
+<br/>
+<table cellpadding="2" cellspacing="0">
+<tr><td><code>background_color</code></td><td>Overall background color (can be set to "transparent")</td></tr>
+<tr><td><code>picture_color</code></td><td>Main picture border color</td></tr>
+<tr><td><code>text_color</code></td><td>Text color</td></tr>
+<tr><td><code>btn_color</code></td><td>Next-previous buttons color (this color is always semi-transparent)</td></tr>
+<tr><td><code>btn_arrow_color</code></td><td>Next-previous buttons arrows color</td></tr>
+<tr><td><code>btn_over_color</code></td><td>Mouseover next-previous buttons color</td></tr>
+<tr><td><code>btn_arrow_over_color</code></td><td>Mouseover next-previous buttons arrows color</td></tr>
+<tr><td><code>scroll_color</code></td><td>Scroll buttons color</td></tr>
+<tr><td><code>scroll_arrow_color</code></td><td>Scroll buttons arrows color</td></tr>
+<tr><td><code>scroll_over_color</code></td><td>Mouseover scroll buttons color</td></tr>
+<tr><td><code>scroll_arrow_over_color</code></td><td>Mouseover scroll buttons arrows color</td></tr>
+<tr><td><code>thumb_color</code></td><td>Thumbnails border color</td></tr>
+<tr><td><code>thumb_over_color</code></td><td>Mouseover and current thumbnails border color</td></tr>
+<tr><td><code>text</code></td><td>Show text (on, off)</td></tr>
+<tr><td><code>fullscreen_icon</code></td><td>Show fullscreen icon (on, off)</td></tr>
+<tr><td><code>slideshow_icon</code></td><td>Show slideshow icon (on, off)</td></tr>
+<tr><td><code>slideshow_autostart</code></td><td>Start slideshow on page load (on, off)</td></tr>
+<tr><td><code>slideshow_delay</code></td><td>Delay between slides (from 1 to 9)</td></tr>
+</table>
+<h2>Support</h2>
+Please do not hesitate to <a href="http://www.flash-gallery.org/support.html">contact us</a> if you have any question or suggestion or if you want to report a bug.
+</body>
+</html>

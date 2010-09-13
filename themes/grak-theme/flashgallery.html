@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Developed by Reality Software | www.realitysoftware.ca
+Released by Flash Gallery | www.flash-gallery.org
+Note: This is a free application distributed under the Creative Commons Attribution 3.0 license,
+which means you can use it in any way you want provided you keep our links intact.
+Don't want our links in the script? You can support this project by purchasing a paid
+version: www.flash-gallery.org/buy.html
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+body {background-color:#DDDDDD;}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Flash Gallery</title>
+
+<!-- Location of javascript. -->
+<script language="javascript" type="text/javascript" src="swfobject.js" ></script>
+
+</head>
+
+<body>
+
+<!-- Div that contains gallery. -->
+<div id="gallery">
+<h1>No flash player!</h1>
+<p>It looks like you don't have flash player installed. <a href="http://www.macromedia.com/go/getflashplayer" >Click here</a> to go to Macromedia download page.</p>
+</div>
+
+<!-- Script that embeds gallery. -->
+<script language="javascript" type="text/javascript">
+var so = new SWFObject("flashgallery.swf", "gallery", "800", "600", "8"); // Location of swf file. You can change gallery width and height here (using pixels or percents).
+so.addParam("quality", "high");
+so.addParam("allowFullScreen", "true");
+so.addParam("wmode", "transparent");
+so.addVariable("content_path","img"); // Location of a folder with JPG and PNG files (relative to php script) or a link to Flickr photostream (for example "http://www.flickr.com/photos/username/" or "http://www.flickr.com/photos/username/sets/setid/").
+so.addVariable("color_path","default.xml"); // Location of xml file with settings.
+so.addVariable("script_path","flashgallery.php"); // Location of php script (not requred if you work with Flickr).
+so.write("gallery");
+</script>
+
+<br/>
+
+<!-- 
+Please place this link anywhere on the page that uses Flash Gallery.
+You can style it anyway you want, but do not change or delete it.
+Read the license! Thanks. :-)
+-->
+Powered by <a href="http://www.flash-gallery.org">Flash Gallery</a>
+
+</body>
+</html>
