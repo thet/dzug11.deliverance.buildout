@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset>
+  <server-settings>
+    <server>localhost:5000</server>
+    <execute-pyref>false</execute-pyref>
+    <dev-allow>localhost</dev-allow>
+    <dev-user username="admin" password="admin" />
+    <display-local-files>false</display-local-files>
+    <edit-local-files>false</edit-local-files>
+  </server-settings>
+
+  <proxy keep-host="1" path="/themes/nonzero">
+    <dest href="{here}/themes/nonzero/" />
+  </proxy>
+
+  <proxy path="/" class="main">
+    <dest href="{here}/themes/" />
+  </proxy>
+
+  <!-- RULES -->
+  <rule class="main" suppress-standard="1">
+    <theme href="/themes/nonzero/index_fluid_2column.html" />
+    <replace content="#content" theme="children:#columnA_2columns" />
+  </rule>
+</ruleset>

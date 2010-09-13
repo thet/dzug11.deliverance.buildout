@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset>
+  <server-settings>
+    <server>localhost:5000</server>
+    <execute-pyref>false</execute-pyref>
+    <dev-allow>localhost</dev-allow>
+    <dev-user username="admin" password="admin" />
+    <display-local-files>false</display-local-files>
+    <edit-local-files>false</edit-local-files>
+  </server-settings>
+
+  <proxy keep-host="1" path="/static" class="static">
+    <dest href="{here}/themes/grak-theme" />
+  </proxy>
+
+  <proxy path="/" class="plone">
+    <dest href="{here}/themes/" />
+  </proxy>
+
+  <!-- proxy path="/" class="plone">
+    <dest href="http://localhost:8080/VirtualHostBase/http/localhost:8903/grak/gruene-akademie/VirtualHostRoot/" />
+  </proxy -->
+
+  <match path="regex:.*view-as-newsletter" abort="1" />  <!-- collective.newsletter -->
+  <match path="regex:.*contenthistorypopup.*" abort="1" />  <!-- popupforms.js corrections -->
+  <match path="regex:^/portal_javascripts/.*" abort="1" />  <!-- TinyMCE -->
+  <match path="regex:.*/themes/advanced/.*" abort="1" />  <!-- TinyMCE -->
+  <match path="regex:.*/plugins/.*" abort="1" />  <!-- class="popup" TinyMCE -->
+
+  <!-- rule class="popup">
+        <theme href="/static/editor-popup.html" />
+        <prepend content='/html/head/script' theme='/html/head/link' />
+        <prepend content="/html/head/link" theme="/html/head/link" />
+        <prepend content="/html/head/style" theme="/html/head/link" />
+        <replace content="/html/head/body" theme="/html/head/body" />
+  </rule -->
+
+  <!-- ====================================================== -->
+  <!-- Rules                                                  -->
+  <!-- ====================================================== -->
+
+  <rule class="plone" suppress-standard="1">
+    <theme href="/static/index.html" />
+
+    <drop theme="/html/head/meta" />
+    <drop theme="script[src *= 'jquery']" />
+    <drop theme="script[src *= 'navigation.js']" />
+    <drop content="link[href *= 'thet.grak.layout.css']" />
+
+    <replace content="/html/head/title" theme="/html/head/title" />
+    <append content="/html/head/meta" theme="children:/html/head" />
+    <append content="/html/head/base" theme="children:/html/head" />
+    <append content="link[rel *= 'kss-base-url']" theme="children:/html/head" />
+
+    <!-- Add in the Plone-created CSS, KSS and JS in addition to the static ones -->
+    <prepend content="link[href *= 'member']" theme="/html/head/link" />
+    <prepend content="link[href *= 'public']" theme="/html/head/link" />
+    <prepend content="link[href *= 'ploneKss']" theme="/html/head/link" />
+    <prepend content="link[href *= 'slimbox']" theme="/html/head/link" />
+    <prepend content="/html/head/style" theme="/html/head/link" />
+    <prepend content="link[rel *= 'kinetic-stylesheet']" theme="/html/head/link" />
+    <prepend content="/html/head/script" theme="/html/head/link" />
+
+    <append content="link[rel = 'author']" theme="children:/html/head" />
+    <append content="link[rel = 'home']" theme="children:/html/head" />
+    <append content="link[rel = 'contents']" theme="children:/html/head" />
+    <append content="link[rel = 'search']" theme="children:/html/head" />
+
+    <!-- ====================================================== -->
+    <!-- Header                                                 -->
+    <!-- ====================================================== -->
+
+    <!-- Accessibility -->
+    <replace content='#portal-header > p.hiddenStructure' theme='#grak-branding > a.hiddenStructure' />
+
+    <!-- Set correct Link for the logo -->
+    <replace content='attributes(href,accesskey,title):#portal-logo' theme='attributes:#grak-logo' />
+
+    <!-- Search box -->
+    <drop content="#portal-searchbox input.searchButton" />
+    <drop content="#portal-searchbox div.searchSection" />
+    <drop content="tag:.LSBox" />
+    <replace content="children:#portal-searchbox" theme="#seachform" />
+
+    <!-- Horizontal Navigation -->
+    <replace content="children:#grak-navigation" theme="children:#grak-wrapperNav" />
+
+    <drop content="#siteaction-grak-sitemap" />
+    <replace content="children:#portal-siteactions" theme="children:#grak-nav2pos1" />
+
+    <!-- ====================================================== -->
+    <!-- Portlets and Viewlets                                  -->
+    <!-- ====================================================== -->
+
+    <!-- place the motto portlet at an appropriate place -->
+    <!--drop content="tag:div[id *= 'portletwrapper']" />
+    <drop content="#portal-column-two span.portletTopLeft" />
+    <drop content="#portal-column-two span.portletTopRight" />
+    <replace content="children:#portal-column-two dl.portletStaticText dt.portletHeader span"
+                      theme="children:#grak-banner p" />
+    <drop content="tag:#portal-column-two dl.portletStaticText dd.portletItem p" />
+    <replace content="children:#portal-column-two dl.portletStaticText dd.portletItem"
+                      theme="children:#grak-banner h1" />
+    <drop content="#portal-column-two dl.portletStaticText" /-->
+
+    <replace content="#grak-banner" theme="#grak-banner" />
+    <drop content="#portal-column-two div.managePortletsLink" />
+
+    <drop theme="children:#grak-content_supp" />
+    <replace content="children:#portal-column-two" theme="children:#grak-content_supp" />
+    <append content=".grak-teaser" theme="children:#grak-content_supp" />
+
+    <!-- ====================================================== -->
+    <!-- Main Content                                           -->
+    <!-- ====================================================== -->
+
+    <replace content="#grak-navigator" theme="#grak-navigator" />
+    <drop theme="children:#grak-content_main" />
+    <append content="attributes(class):div.documentEditable" theme="attributes(class):#grak-content_main" />
+    <replace content="#content h1" theme="children:#grak-content_main" />
+    <append content="#plone-document-byline" theme="children:#grak-content_main" />
+    <append content="#edit-bar" theme="children:#grak-content_main" />
+    <append content=".portalMessage" theme="children:#grak-content_main" />
+    <append content="#content" theme="children:#grak-content_main" />
+
+    <append content="#pb_1" theme="#grak-footer" />
+    <append content="#pb_2" theme="#grak-footer" />
+
+  </rule>
+</ruleset>
