@@ -11,5 +11,4 @@ dist
 .*
 *.pyc
 *.wpr
-src
 !.gitignore
