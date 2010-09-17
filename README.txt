@@ -1,5 +1,5 @@
-install a hot new plone4
-========================
+install deliverance
+===================
 
 create an working directory
 $ cd
@@ -22,8 +22,20 @@ run:
 $ ./bin/buildout
 and relax...
 
-point your browser to:
-http://localhost:8080/
+
+To run the rules for Gruene Akademie example Plone site do:
+$./bin/deliverance-proxy rules-grak.xml
+and point your browser to:
+$ firefox http://localhost:5000/grak-plain.html
+
+run the funkload bench like so:
+$ cd src/dzug11/deliverance/buildout/tests
+$ ../../../../../bin/fl-monitor-ctl monitor.conf start
+$  ../../../../../bin/fl-run-bench test_Simple.py Simple.test_simple
+$  ../../../../../bin/fl-build-report --html simple-bench.xml
+
+
+
 
 general info
 ============
@@ -48,14 +60,3 @@ zc.buildout on pypi:
     - http://pypi.python.org/pypi/zc.buildout
 
 #
-
-more info
-=========
-
-To run the rules for Gruene Akademie example Plone site do:
-$./bin/deliverance-proxy rules-grak.xml
-and open a browser like:
-$ firefox http://localhost:5000/grak-plain.html
-
-run the funkload bench like so:
-$ ./bin/funkload bench -t funkload.test_Simple
