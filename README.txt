@@ -14,6 +14,11 @@ have git-scm installed and check out the dzug11 deliverance example buildout:
 $ git clone git://github.com/thet/dzug11.deliverance.buildout.git thet.wpd10.buildout
 $ cd dzug11.deliverance.buildout
 
+Deliverance uses lxml which needs development headers of libxslt and libxml.
+On Ubuntu Linux, just type:
+$ apt-get install libxslt1-dev
+
+
 run:
 $ ../python/bin/python bootstrap.py --distribute
 this uses the more modern distribute packaging tools http://packages.python.org/distribute/ instead of setuptools
